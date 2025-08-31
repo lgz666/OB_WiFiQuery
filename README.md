@@ -28,6 +28,19 @@
 - **值**: 你的设备号。如果有多个设备，请用英文 `&` 符号连接。
   例如: `86825xxxxx&8914xxxxx`
 
+**配置推送服务 (可选)**
+根据你选择的推送服务，设置对应的环境变量。如果你不希望使用推送功能，可以跳过此步骤。
+| 推送服务 | 环境变量名 |
+|:---|:---|
+| **企业微信机器人** | `WECHAT_ROBOT_WEBHOOK` |
+| **Server酱** | `SERVERJANG_SCKEY` |
+| **Bark** | `BARK_PUSH_URL` |
+| **PushPlus** | `PUSHPLUS_TOKEN` |
+| **钉钉机器人** | `DINGTALK_WEBHOOK` |
+| **飞书机器人** | `FEISHU_WEBHOOK` |
+| **WxPusher** | `WXPUSHER_APP_TOKEN` 和 `WXPUSHER_UIDS` (多个 UID 用 `&` 连接) |
+
+
 ### 3. 查看运行结果
 
 脚本运行后，你可以在任务的运行日志中查看每个设备的流量查询结果。
