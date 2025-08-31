@@ -1,38 +1,34 @@
-# 欧本随身wifi的流量查询脚本，运行于青龙面板
+# PocketFlow - 欧本随身 WiFi 流量查询脚本
 
- --- 配置项 ---
-在青龙面板选择-环境变量-然后添加变量名称WIFI_DEV_NOS，值就填你的设备号，多个设备号用英文 & 符号连接。
-示例: 86825xxxx&12345xxxx
-或者一台设备就添加一个变量都行，可以添加多个变量
-DEV_NO_LIST_STRING = os.getenv('WIFI_DEV_NOS')
+一个用于自动化查询和监控欧本随身 WiFi 流量信息的 Python 脚本。
 
-WECHAT_ROBOT_WEBHOOK: 选填。企业微信机器人的 Webhook 地址，用于接收推送消息。
-WECHAT_ROBOT_WEBHOOK = os.getenv('WECHAT_ROBOT_WEBHOOK')
+## 简介
 
-WXPUSHER_APP_TOKEN: 选填。WxPusher 的 AppToken。
-WXPUSHER_APP_TOKEN = os.getenv('WXPUSHER_APP_TOKEN')
-WXPUSHER_UIDS: 选填。你的 WxPusher UID，多个 UID 请用英文 & 符号连接。
-WXPUSHER_UIDS = os.getenv('WXPUSHER_UIDS')
+本项目旨在为使用欧本随身 WiFi 设备的用户提供一个方便的流量查询解决方案。通过部署此脚本到定时任务平台（如青龙面板），你可以自动获取设备号的流量使用情况，而无需手动登录查询。
 
-SERVERJANG_SCKEY: 选填。Server酱的 SCKEY，用于微信推送。
-SERVERJANG_SCKEY = os.getenv('SERVERJANG_SCKEY')
+## 主要特性
 
-BARK_PUSH_URL: 选填。Bark 推送的 URL，用于 iOS 推送。
-BARK_PUSH_URL = os.getenv('BARK_PUSH_URL')
+- **自动 API 发现**: 脚本会自动获取最新的 API 接口地址，无需手动更新。
+- **多设备支持**: 支持同时查询多个设备号，只需在环境变量中配置即可。
+- **可配置**: 脚本中的线程数、设备号和查询模式都可以通过修改变量来调整。
 
-PUSHPLUS_TOKEN: 选填。PushPlus 的 Token，用于微信公众号/企业微信推送。
-PUSHPLUS_TOKEN = os.getenv('PUSHPLUS_TOKEN')
+## 使用方法
 
-DINGTALK_WEBHOOK: 选填。钉钉机器人 Webhook 地址，用于钉钉群推送。
-DINGTALK_WEBHOOK = os.getenv('DINGTALK_WEBHOOK')
+### 1. 部署脚本
 
-FEISHU_WEBHOOK: 选填。飞书机器人 Webhook 地址，用于飞书群推送。
-FEISHU_WEBHOOK = os.getenv('FEISHU_WEBHOOK')
+ **定时任务** 页面，点击 **创建任务**，然后填写以下信息：
+- **名称**: `PocketFlow` (或你喜欢的任何名字)
+- **命令**: `ql raw https://raw.githubusercontent.com/lgz666/OB_WiFiQuery/main/ob_mifi.py`
+- **定时规则**: `0 * * * *` (示例：每小时运行一次)
 
+### 2. 配置环境变量
 
+你需要为脚本配置一个核心环境变量：
+- **名称**: `WIFI_DEV_NOS`
+- **值**: 你的设备号。如果有多个设备，请用英文 `&` 符号连接。
+  例如: `86825xxxxx&8914xxxxx`
 
-控制推送模式：
-'full' (详细推送，并打印所有可读字段)
-'simple' (精简推送)
-'off' (不推送)
-PUSH_MODE = 'simple'
+### 3. 查看运行结果
+
+脚本运行后，你可以在任务的运行日志中查看每个设备的流量查询结果。
+
