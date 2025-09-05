@@ -18,7 +18,7 @@
 
  **青龙面板-定时任务** 页面，点击 **创建任务**，然后填写以下信息：
 - **名称**: `PocketFlow` (或你喜欢的任何名字)
-- **命令**: `ql raw https://raw.githubusercontent.com/lgz666/OB_WiFiQuery/main/ob_mifi.py`
+- **命令**: `ql raw https://gh-proxy.com/https://raw.githubusercontent.com/lgz666/OB_WiFiQuery/main/ob_mifi.py`
 - **定时规则**: `0 * * * *` (示例：每小时运行一次)
 
 ### 2. 配置环境变量
